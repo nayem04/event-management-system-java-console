@@ -1,4 +1,4 @@
-package common.validator;
+package common.validations;
 
 import java.util.regex.Pattern;
 
