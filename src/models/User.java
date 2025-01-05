@@ -1,5 +1,8 @@
 package models;
 
+import common.validations.Email;
+import common.validations.Phone;
+
 public class User {
     private Integer id;
     private String name;
@@ -46,6 +49,10 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public boolean validate() {
+        return Email.validate(email) && Phone.validate(phone);
     }
 
     @Override
