@@ -2,9 +2,9 @@ package common.validations;
 
 import java.util.regex.Pattern;
 
-public class Validator {
-    public static boolean validate(String regx, String input) {
+public final class Validator {
+    public static boolean validate(final String regx, final String input) {
         Pattern pattern = Pattern.compile(regx);
-        return pattern.matcher(input).matches();
+        return input != null && !input.isEmpty() && pattern.matcher(input).matches();
     }
 }
