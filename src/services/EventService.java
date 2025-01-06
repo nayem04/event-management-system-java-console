@@ -3,17 +3,15 @@ package services;
 import common.exceptions.DuplicateRegistrationException;
 import common.exceptions.NoSuchEventException;
 import common.factories.EventFactory;
+import common.utilities.FileManager;
 import common.validations.Email;
 import common.validations.Phone;
-import common.validations.Validator;
 import models.Event;
 import models.User;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Map;
+import java.util.*;
 
 public class EventService {
     private static EventService eventService;
@@ -69,7 +67,7 @@ public class EventService {
             throw new DuplicateRegistrationException("User with id " + id + " already register for this event.");
         }
 
-        if(event.addRegistrations()) {
+        if (event.addRegistrations()) {
             event.getUserIds().add(id);
             System.out.println("User registrations done successfully!");
         } else {
@@ -102,5 +100,21 @@ public class EventService {
         }
 
         System.out.println("--------------------------------------------------------------");
+    }
+
+    public void exportData(String format, String fileName) {
+        try {
+            if (format.equalsIgnoreCase("csv")) {
+                FileManager.exportToCSV(fileName, new ArrayList<>(events.values()));
+            } else if (format.equalsIgnoreCase("json")) {
+                FileManager.exportToJSON(fileName, new ArrayList<>(events.values()));
+            } else {
+                System.out.println("Invalid format. Please choose either 'CSV' or 'JSON'.");
+                return;
+            }
+            System.out.println("Data exported successfully to " + fileName);
+        } catch (IOException ioException) {
+            System.out.println("An error occurred while exporting data: " + ioException.getMessage());
+        }
     }
 }

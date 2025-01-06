@@ -69,5 +69,11 @@ public class EventController {
     }
 
     public void exportData(Scanner scanner) {
+        System.out.print("Enter file format (CSV/JSON): ");
+        String format = scanner.nextLine();
+        System.out.print("Enter file name: ");
+        String fileName = scanner.nextLine();
+
+        eventService.exportData(format, fileName);
     }
 }
