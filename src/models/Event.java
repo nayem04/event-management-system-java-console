@@ -21,6 +21,7 @@ public class Event {
         this.date = date;
         this.venue = venue;
         this.capacity = capacity;
+        registrations = 0;
     }
 
     public Integer getId() {
