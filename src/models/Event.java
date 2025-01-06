@@ -1,6 +1,8 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Event {
     private Integer id;
@@ -10,9 +12,9 @@ public class Event {
     private String venue;
     private Integer capacity;
     private Integer registrations;
-    //Optional properties
     private String speakerDetails;
     private boolean vipAccess;
+    private List<Integer> userIds;
 
     public Event(Integer id, String name, String type, Date date, String venue, Integer capacity) {
         this.id = id;
@@ -22,6 +24,7 @@ public class Event {
         this.venue = venue;
         this.capacity = capacity;
         registrations = 0;
+        userIds = new ArrayList<>();
     }
 
     public Integer getId() {
@@ -96,15 +99,23 @@ public class Event {
         this.vipAccess = vipAccess;
     }
 
+    public List<Integer> getUserIds() {
+        return userIds;
+    }
+
+    public void setUserIds(List<Integer> userIds) {
+        this.userIds = userIds;
+    }
+
     public boolean addRegistrations() {
-        if (capacity > registrations) {
+        if (!isFullyBooked()) {
             registrations++;
             return true;
         }
         return false;
     }
 
-    public boolean isFullyBooked() {
+    private boolean isFullyBooked() {
         return registrations.equals(capacity);
     }
 
