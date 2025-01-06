@@ -36,6 +36,6 @@ public class EventService {
 
         Event event = eventFactory.createEvent(id, name, type, date, venue, capacity);
         events.put(id, event);
-        System.out.println("Event created successfully! " + events);
+        System.out.println("Event created successfully!");
     }
 }
