@@ -9,7 +9,7 @@ public class Main {
 
         int option;
         boolean exit = false;
-        Scanner scanner = new Scanner(System.in);
+        final Scanner scanner = new Scanner(System.in);
         EventController eventController = new EventController();
 
         while (!exit) {
