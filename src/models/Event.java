@@ -10,18 +10,17 @@ public class Event {
     private String venue;
     private Integer capacity;
     private Integer registrations;
+    //Optional properties
+    private String speakerDetails;
+    private boolean vipAccess;
 
-    public Event() {
-    }
-
-    public Event(Integer id, String name, String type, Date date, String venue, Integer capacity, Integer registrations) {
+    public Event(Integer id, String name, String type, Date date, String venue, Integer capacity) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.date = date;
         this.venue = venue;
         this.capacity = capacity;
-        this.registrations = registrations;
     }
 
     public Integer getId() {
@@ -78,6 +77,22 @@ public class Event {
 
     public void setRegistrations(Integer registrations) {
         this.registrations = registrations;
+    }
+
+    public String getSpeakerDetails() {
+        return speakerDetails;
+    }
+
+    public void setSpeakerDetails(String speakerDetails) {
+        this.speakerDetails = speakerDetails;
+    }
+
+    public boolean isVipAccess() {
+        return vipAccess;
+    }
+
+    public void setVipAccess(boolean vipAccess) {
+        this.vipAccess = vipAccess;
     }
 
     public boolean addRegistrations() {
