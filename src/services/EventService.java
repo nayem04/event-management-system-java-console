@@ -76,4 +76,31 @@ public class EventService {
             System.out.println("Can't register for this event. It's fully booked");
         }
     }
+
+    public void viewAnalytics() {
+        long totalUsers = users.size();
+        double occupancyPercentage = events.values().stream()
+                .mapToDouble(e -> (double) e.getRegistrations() / e.getCapacity() * 100)
+                .average()
+                .orElse(0.0);
+
+        System.out.println("Analytics:\nTotal Users: " + totalUsers);
+        System.out.println("Event Occupancy Percentage: " + String.format("%.2f", occupancyPercentage) + "%");
+
+        System.out.println("\nEvent-Specific Analytics:");
+        System.out.println("--------------------------------------------------------------");
+        System.out.printf("%-12s %-20s %-15s %-10s\n", "Event ID", "Name", "Occupancy (%)", "Fully Booked");
+        System.out.println("--------------------------------------------------------------");
+
+        for (Event event : events.values()) {
+            double occupancy = ((double) event.getRegistrations() / event.getCapacity()) * 100;
+            System.out.printf("%-12s %-20s %-15.2f %-10s\n",
+                    event.getId(),
+                    event.getName(),
+                    occupancy,
+                    event.isFullyBooked() ? "Yes" : "No");
+        }
+
+        System.out.println("--------------------------------------------------------------");
+    }
 }

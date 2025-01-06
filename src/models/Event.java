@@ -115,7 +115,7 @@ public class Event {
         return false;
     }
 
-    private boolean isFullyBooked() {
+    public boolean isFullyBooked() {
         return registrations.equals(capacity);
     }
 

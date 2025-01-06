@@ -65,6 +65,7 @@ public class EventController {
     }
 
     public void viewAnalytics() {
+        eventService.viewAnalytics();
     }
 
     public void exportData(Scanner scanner) {
