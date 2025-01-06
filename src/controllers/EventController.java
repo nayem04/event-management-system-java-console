@@ -1,17 +1,25 @@
 package controllers;
 
+import services.EventService;
+
 import java.util.Scanner;
 
 public class EventController {
-    public void createEvent(Scanner scanner){
+    private final EventService eventService;
+
+    public EventController() {
+        eventService = EventService.getInstance();
     }
 
-    public void registerUser(Scanner scanner){
+    public void createEvent(Scanner scanner) {
     }
 
-    public void viewAnalytics(){
+    public void registerUser(Scanner scanner) {
     }
 
-    public void exportData(Scanner scanner){
+    public void viewAnalytics() {
+    }
+
+    public void exportData(Scanner scanner) {
     }
 }
